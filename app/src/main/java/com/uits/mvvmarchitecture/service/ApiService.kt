@@ -1,6 +1,7 @@
 package com.uits.mvvmarchitecture.service
 
 import com.uits.mvvmarchitecture.model.User
+import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -16,6 +17,6 @@ interface ApiService {
     fun getNewsList(
         @Query("sources") newsSource: String,
         @Query("apiKey") apiKey: String
-    ): Single<List<User>>
+    ): Observable<List<User>>
 
 }

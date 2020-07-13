@@ -3,6 +3,7 @@ package com.uits.mvvmarchitecture.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.uits.baseproject.service.ApiClients
 import com.uits.mvvmarchitecture.base.BaseResponse
 import com.uits.mvvmarchitecture.model.User
 import com.uits.mvvmarchitecture.service.ApiService
@@ -24,7 +25,9 @@ class MainViewModel : ViewModel() {
     private lateinit var newsApi: ApiService
 
     init {
-        newsApi = RetrofitService.createService(ApiService::class.java)
+//        newsApi = RetrofitService.createService(ApiService::class.java)
+        ApiClients.init("https://newsapi.org/v2/")
+        newsApi = ApiClients.createService(ApiService::class.java)
         fetchUsers()
     }
 
